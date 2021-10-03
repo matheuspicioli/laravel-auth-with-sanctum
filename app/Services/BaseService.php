@@ -12,12 +12,12 @@ class BaseService implements Service
     // BaseService uses the Eloquent like a repository
     public function find($id): ?BaseModel
     {
-        return $this->model->find($id);
+        return $this->model->where('id', $id)->fist();
     }
 
     public function findOrFail($id): BaseModel
     {
-        return $this->model->findOrFail($id);
+        return $this->model->where('id', $id)->firstOrFail();
     }
 
     public function store(array $data): BaseModel
